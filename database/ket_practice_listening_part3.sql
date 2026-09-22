@@ -68,3 +68,102 @@ VALUES
 (1, 13, 'The bag was', 'old.', 'expensive.', 'big.', 'C', 'PLACEHOLDER - chưa có audio gốc, cần nghe lại để xác nhận đáp án đúng.', 0),
 (1, 14, 'What time did the woman lose her bag?', '9.30', '10.00', '10.30', 'B', 'PLACEHOLDER - chưa có audio gốc, cần nghe lại để xác nhận đáp án đúng.', 0),
 (1, 15, 'The policeman will telephone her in the', 'morning.', 'afternoon.', 'evening.', 'A', 'PLACEHOLDER - chưa có audio gốc, cần nghe lại để xác nhận đáp án đúng.', 0);
+
+-- ------------------------------------------------------------
+-- KET 2 - Test 2, 3, 4 và KET 3 - Test 1-4 (đủ Example + câu 11-15 mỗi
+-- đề). Đáp án đúng lấy trực tiếp từ đề đã có sẵn đáp án tick tay (ảnh đề
+-- gốc do admin cung cấp) - KHÔNG phải placeholder, không cần nghe lại để
+-- xác nhận. audio_path = NULL vì chưa có file ghi âm thật - vào Admin >
+-- Listening Part 3 để tải mp3 hội thoại lên cho từng đề.
+-- ------------------------------------------------------------
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 2 - Listening Part 3 - Test 2', 'KET 2', 'Test 2', NULL, 3);
+SET @k2t2 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k2t2, 10, 'Where is the new sports centre?', 'Long Road', 'Bridge Street', 'Station Road', 'A', NULL, 1),
+(@k2t2, 11, 'What sport can''t you do at the sports centre?', 'tennis', 'table-tennis', 'volleyball', 'A', NULL, 0),
+(@k2t2, 12, 'How much must Marina pay?', '£14 a year', '£30 a year', '£50 a year', 'B', NULL, 0),
+(@k2t2, 13, 'How many days a week is the sports centre open late?', '2', '3', '4', 'B', NULL, 0),
+(@k2t2, 14, 'Which bus goes to the sports centre?', 'number 10', 'number 16', 'number 60', 'B', NULL, 0),
+(@k2t2, 15, 'When will Michael and Marina go to the sports centre?', 'Tuesday', 'Thursday', 'Friday', 'C', NULL, 0);
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 2 - Listening Part 3 - Test 3', 'KET 2', 'Test 3', NULL, 3);
+SET @k2t3 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k2t3, 10, 'Mrs Lee will leave on', 'Friday', 'Saturday', 'Sunday', 'B', NULL, 1),
+(@k2t3, 11, 'Mrs Lee''s plane goes at', '8 a.m.', '10 a.m.', '11 a.m.', 'B', NULL, 0),
+(@k2t3, 12, 'She is going to', 'Amsterdam', 'Frankfurt', 'London', 'C', NULL, 0),
+(@k2t3, 13, 'First she will go to', 'a factory', 'an office', 'a hotel', 'A', NULL, 0),
+(@k2t3, 14, 'She will have dinner in', 'a restaurant', 'her hotel', 'someone''s house', 'A', NULL, 0),
+(@k2t3, 15, 'The next morning she will travel by', 'plane', 'train', 'car', 'B', NULL, 0);
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 2 - Listening Part 3 - Test 4', 'KET 2', 'Test 4', NULL, 3);
+SET @k2t4 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k2t4, 10, 'Chloe wants to go to', 'Italy', 'Sweden', 'Switzerland', 'A', NULL, 1),
+(@k2t4, 11, 'How many times has Chloe been sailing before?', 'never', 'once', 'twice', 'A', NULL, 0),
+(@k2t4, 12, 'How much can Chloe spend?', '£300', '£380', '£450', 'B', NULL, 0),
+(@k2t4, 13, 'Chloe will go in', 'August', 'September', 'October', 'B', NULL, 0),
+(@k2t4, 14, 'Chloe would like to sail on', 'a lake', 'the sea', 'a river', 'A', NULL, 0),
+(@k2t4, 15, 'How does Chloe want to pay?', 'by cheque', 'with cash', 'by credit card', 'C', NULL, 0);
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 3 - Listening Part 3 - Test 1', 'KET 3', 'Test 1', NULL, 3);
+SET @k3t1 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k3t1, 10, 'How is Steve going to go to London?', 'by bus', 'by car', 'by train', 'C', NULL, 1),
+(@k3t1, 11, 'How much is a travel card?', '£6', '£16', '£60', 'B', NULL, 0),
+(@k3t1, 12, 'Jan will need', 'one photo', 'two photos', 'four photos', 'B', NULL, 0),
+(@k3t1, 13, 'Photos are less expensive', 'in the photographer''s shop', 'in the library', 'in the post office', 'A', NULL, 0),
+(@k3t1, 14, 'For the travel card, Jan must take', 'a letter', 'her passport', 'her driving licence', 'A', NULL, 0),
+(@k3t1, 15, 'Jan can get a travel card from', 'her college', 'the travel agent''s', 'the tourist office', 'B', NULL, 0);
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 3 - Listening Part 3 - Test 2', 'KET 3', 'Test 2', NULL, 3);
+SET @k3t2 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k3t2, 10, 'The name of Peter''s driving school is', 'AA', 'AC', 'ABC', 'C', NULL, 1),
+(@k3t2, 11, 'Each driving lesson costs', '£14', '£40', '£60', 'A', NULL, 0),
+(@k3t2, 12, 'A lesson is', '30 minutes', '45 minutes', '60 minutes', 'B', NULL, 0),
+(@k3t2, 13, 'The teacher''s car is', 'slow', 'old', 'big', 'A', NULL, 0),
+(@k3t2, 14, 'Peter failed the test because he', 'drove too fast', 'didn''t see a crossing', 'didn''t stop at the traffic lights', 'C', NULL, 0),
+(@k3t2, 15, 'Peter thinks the teacher is too', 'expensive', 'unfriendly', 'young', 'A', NULL, 0);
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 3 - Listening Part 3 - Test 3', 'KET 3', 'Test 3', NULL, 3);
+SET @k3t3 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k3t3, 10, 'The children''s show is at', 'the theatre', 'the shopping centre', 'the library', 'C', NULL, 1),
+(@k3t3, 11, 'The show begins at', '1.15', '2.00', '3.30', 'B', NULL, 0),
+(@k3t3, 12, 'A child''s ticket costs', '25p', '75p', '£1.50', 'B', NULL, 0),
+(@k3t3, 13, 'The holiday reading course is for', '4 weeks', '6 weeks', '10 weeks', 'B', NULL, 0),
+(@k3t3, 14, 'This year from the library, children can win', 'a pen', 'a school bag', 'a book', 'A', NULL, 0),
+(@k3t3, 15, 'Jenny should meet Mark again', 'next week', 'tomorrow', 'today', 'C', NULL, 0);
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 3 - Listening Part 3 - Test 4', 'KET 3', 'Test 4', NULL, 3);
+SET @k3t4 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k3t4, 10, 'The woman will visit the park for', 'one week', 'two weeks', 'four weeks', 'A', NULL, 1),
+(@k3t4, 11, 'In the park, there is', 'a café', 'a hotel', 'a guest-house', 'A', NULL, 0),
+(@k3t4, 12, 'The village has a', 'swimming pool', 'cinema', 'food shop', 'C', NULL, 0),
+(@k3t4, 13, 'You can only go through the park', 'by car', 'by bus', 'on foot', 'C', NULL, 0),
+(@k3t4, 14, 'On weekdays, a visit to the park costs', '$12', '$13', '$16', 'A', NULL, 0),
+(@k3t4, 15, 'In the park, the woman will see', 'animals', 'flowers', 'snow', 'A', NULL, 0);
