@@ -205,3 +205,36 @@ VALUES
 (@k4t2, 13, 'Anne''s coach ticket will cost', '£2.50.', '£5.60.', '£10.80.', 'B', NULL, 0),
 (@k4t2, 14, 'The nearest coach stop to Anne''s house is', 'in the bus station.', 'in the market square.', 'outside the museum.', 'C', NULL, 0),
 (@k4t2, 15, 'The coach journey takes', '10 minutes.', '20 minutes.', '40 minutes.', 'C', NULL, 0);
+
+-- ------------------------------------------------------------
+-- KET 4 - Test 3 (Diane talking to a friend about a trip to London) và
+-- Test 4 (Philip talking to a friend about his photography course). Đáp
+-- án đúng lấy trực tiếp từ đề đã có sẵn đáp án tick tay (ảnh đề gốc do
+-- admin cung cấp).
+-- ------------------------------------------------------------
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 4 - Listening Part 3 - Test 3', 'KET 4', 'Test 3', NULL, 3);
+SET @k4t3 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k4t3, 10, 'Diane went to London yesterday', 'morning.', 'afternoon.', 'evening.', 'C', NULL, 1),
+(@k4t3, 11, 'Diane went to London by', 'car.', 'bus.', 'underground.', 'B', NULL, 0),
+(@k4t3, 12, 'Diane and her friends ate', 'Mexican food.', 'Chinese food.', 'Spanish food.', 'B', NULL, 0),
+(@k4t3, 13, 'Diane says the restaurant was', 'full.', 'expensive.', 'quiet.', 'A', NULL, 0),
+(@k4t3, 14, 'After the meal, Diane and her friends', 'sat and talked.', 'saw a film.', 'walked by the water.', 'C', NULL, 0),
+(@k4t3, 15, 'During Diane''s trip to London,', 'it rained.', 'it snowed.', 'it was windy.', 'C', NULL, 0);
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 4 - Listening Part 3 - Test 4', 'KET 4', 'Test 4', NULL, 3);
+SET @k4t4 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k4t4, 10, 'Where does Philip do the photography classes?', 'Park College', 'City College', 'South College', 'B', NULL, 1),
+(@k4t4, 11, 'What time do the photography classes begin?', '5.15 p.m.', '6.00 p.m.', '6.45 p.m.', 'C', NULL, 0),
+(@k4t4, 12, 'How much does Philip pay for the photography course?', '£55', '£75', '£95', 'B', NULL, 0),
+(@k4t4, 13, 'Philip''s happy with the course because he''s', 'learning about famous photographers.', 'using a new camera.', 'getting better at photography.', 'C', NULL, 0),
+(@k4t4, 14, 'Philip thinks it''s easy to take photographs of', 'trees.', 'animals.', 'children.', 'A', NULL, 0),
+(@k4t4, 15, 'After the course, Philip will', 'buy a new camera.', 'get a job in photography.', 'make photography his hobby.', 'C', NULL, 0);
