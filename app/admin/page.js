@@ -52,6 +52,16 @@ export default function AdminHubPage() {
               <span className="part-arrow" aria-hidden="true">&rarr;</span>
             </a>
           </li>
+          <li className="part-item available">
+            <a href="/admin/listening/part1">
+              <span className="part-badge">L1</span>
+              <span className="part-meta">
+                <span className="part-title">Quản trị Listening 1</span>
+                <span className="part-desc">Câu hỏi, audio riêng từng câu, đáp án A/B/C (ảnh hoặc text)</span>
+              </span>
+              <span className="part-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
         </ul>
 
         <p style={{ marginTop: 24 }}>

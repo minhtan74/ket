@@ -9,6 +9,7 @@ const NAV_TABS = [
   { key: 'part5', label: 'Part 5', href: '/ket/reading/part5?id=1' },
   { key: 'part6', label: 'Part 6', href: '/ket/reading/part6?id=1' },
   { key: 'part7', label: 'Part 7', href: '/ket/reading/part7' },
+  { key: 'listening1', label: 'Listening 1', href: '/ket/listening/part1' },
 ];
 
 export default function NavTabs({ active }) {

@@ -85,6 +85,53 @@ export default function HomePage() {
           </li>
         </ul>
 
+        <h2 style={{ marginTop: 32 }}>Listening</h2>
+
+        <ul className="part-list">
+          <li className="part-item available">
+            <a href="/ket/listening/part1">
+              <span className="part-badge">1</span>
+              <span className="part-meta">
+                <span className="part-title">Listening 1</span>
+                <span className="part-desc">Nghe 5 hội thoại ngắn, chọn tranh/đáp án A/B/C — nhiều đề</span>
+              </span>
+              <span className="part-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </li>
+          <li className="part-item disabled">
+            <span className="part-badge">2</span>
+            <span className="part-meta">
+              <span className="part-title">Listening Part 2</span>
+              <span className="part-desc">Chưa triển khai</span>
+            </span>
+            <span className="coming-soon">Coming soon</span>
+          </li>
+          <li className="part-item disabled">
+            <span className="part-badge">3</span>
+            <span className="part-meta">
+              <span className="part-title">Listening Part 3</span>
+              <span className="part-desc">Chưa triển khai</span>
+            </span>
+            <span className="coming-soon">Coming soon</span>
+          </li>
+          <li className="part-item disabled">
+            <span className="part-badge">4</span>
+            <span className="part-meta">
+              <span className="part-title">Listening Part 4</span>
+              <span className="part-desc">Chưa triển khai</span>
+            </span>
+            <span className="coming-soon">Coming soon</span>
+          </li>
+          <li className="part-item disabled">
+            <span className="part-badge">5</span>
+            <span className="part-meta">
+              <span className="part-title">Listening Part 5</span>
+              <span className="part-desc">Chưa triển khai</span>
+            </span>
+            <span className="coming-soon">Coming soon</span>
+          </li>
+        </ul>
+
         <a className="admin-entry" href="/admin">
           <span>⚙ Quản trị nội dung (Admin)</span>
           <span className="part-arrow" aria-hidden="true">&rarr;</span>
