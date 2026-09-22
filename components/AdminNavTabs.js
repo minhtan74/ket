@@ -8,6 +8,7 @@ const ADMIN_NAV_TABS = [
   { key: 'admin6', label: 'Part 6', href: '/admin/part6' },
   { key: 'admin7', label: 'Part 7', href: '/admin/part7' },
   { key: 'adminListening1', label: 'Listening 1', href: '/admin/listening/part1' },
+  { key: 'adminListening3', label: 'Listening 3', href: '/admin/listening/part3' },
 ];
 
 export default function AdminNavTabs({ active }) {
