@@ -167,3 +167,22 @@ VALUES
 (@k3t4, 13, 'You can only go through the park', 'by car', 'by bus', 'on foot', 'C', NULL, 0),
 (@k3t4, 14, 'On weekdays, a visit to the park costs', '$12', '$13', '$16', 'A', NULL, 0),
 (@k3t4, 15, 'In the park, the woman will see', 'animals', 'flowers', 'snow', 'A', NULL, 0);
+
+-- ------------------------------------------------------------
+-- KET 4 - Test 1 (Sue talking to her friend, Jim, about the new sports
+-- centre). Đáp án đúng lấy trực tiếp từ đề đã có sẵn đáp án tick tay (ảnh
+-- đề gốc do admin cung cấp).
+-- ------------------------------------------------------------
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 4 - Listening Part 3 - Test 1', 'KET 4', 'Test 1', NULL, 3);
+SET @k4t1 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k4t1, 10, 'The new sports centre is', 'cheap.', 'big.', 'dark.', 'B', NULL, 1),
+(@k4t1, 11, 'Which bus goes to the sports centre?', '15', '18', '25', 'B', NULL, 0),
+(@k4t1, 12, 'From Monday to Saturday, the sports centre is open from', '6 a.m.', '7 a.m.', '9 a.m.', 'A', NULL, 0),
+(@k4t1, 13, 'If Sue goes swimming, she must take', 'soap.', 'a swimming hat.', 'a towel.', 'B', NULL, 0),
+(@k4t1, 14, 'At the sports centre, you can buy', 'sandwiches.', 'fruit.', 'drinks.', 'A', NULL, 0),
+(@k4t1, 15, 'Jim and Sue are going to go to the sports centre next', 'Wednesday.', 'Thursday.', 'Saturday.', 'B', NULL, 0);
