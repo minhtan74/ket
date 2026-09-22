@@ -186,3 +186,22 @@ VALUES
 (@k4t1, 13, 'If Sue goes swimming, she must take', 'soap.', 'a swimming hat.', 'a towel.', 'B', NULL, 0),
 (@k4t1, 14, 'At the sports centre, you can buy', 'sandwiches.', 'fruit.', 'drinks.', 'A', NULL, 0),
 (@k4t1, 15, 'Jim and Sue are going to go to the sports centre next', 'Wednesday.', 'Thursday.', 'Saturday.', 'B', NULL, 0);
+
+-- ------------------------------------------------------------
+-- KET 4 - Test 2 (Anne asking her friend about going to a shopping
+-- centre). Đáp án đúng lấy trực tiếp từ đề đã có sẵn đáp án tick tay (ảnh
+-- đề gốc do admin cung cấp).
+-- ------------------------------------------------------------
+
+INSERT INTO ket_listening_part3_tests (title, ket_group, test_label, audio_path, part) VALUES ('KET 4 - Listening Part 3 - Test 2', 'KET 4', 'Test 2', NULL, 3);
+SET @k4t2 = LAST_INSERT_ID();
+
+INSERT INTO ket_listening_part3_questions
+    (test_id, question_number, question_text, option_a, option_b, option_c, correct_answer, explanation, is_example)
+VALUES
+(@k4t2, 10, 'The name of the new shopping centre is', 'The Rivers.', 'The Forest Centre.', 'Queen''s.', 'C', NULL, 1),
+(@k4t2, 11, 'At the moment, the shopping centre sells', 'clothes.', 'books.', 'food.', 'A', NULL, 0),
+(@k4t2, 12, 'You can take a coach to the shopping centre on', 'Mondays.', 'Tuesdays.', 'Saturdays.', 'B', NULL, 0),
+(@k4t2, 13, 'Anne''s coach ticket will cost', '£2.50.', '£5.60.', '£10.80.', 'B', NULL, 0),
+(@k4t2, 14, 'The nearest coach stop to Anne''s house is', 'in the bus station.', 'in the market square.', 'outside the museum.', 'C', NULL, 0),
+(@k4t2, 15, 'The coach journey takes', '10 minutes.', '20 minutes.', '40 minutes.', 'C', NULL, 0);
