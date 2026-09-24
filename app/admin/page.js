@@ -33,16 +33,6 @@ export default function AdminHubPage() {
             </a>
           </li>
           <li className="part-item available">
-            <a href="/admin/part6">
-              <span className="part-badge">6</span>
-              <span className="part-meta">
-                <span className="part-title">Quản trị Part 6</span>
-                <span className="part-desc">Thư, note và các field trong form</span>
-              </span>
-              <span className="part-arrow" aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
-          <li className="part-item available">
             <a href="/admin/part7">
               <span className="part-badge">7</span>
               <span className="part-meta">

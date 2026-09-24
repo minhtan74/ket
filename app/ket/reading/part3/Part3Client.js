@@ -1,34 +1,43 @@
 'use client';
 
-// Client Component: form làm bài Reading Part 6 (Word Completion). Mỗi câu
-// là 1 định nghĩa tiếng Anh + gợi ý (chữ cái đầu + số ô trống theo đúng độ
-// dài từ) + 1 ô gõ đáp án. Cảnh báo trước khi rời trang nếu chưa nộp bài.
+// Client Component: form làm bài Reading Part 3 (Matching Functional
+// Language). Giống hệt UI tickbox A/B/C của Part 2, chỉ khác nội dung câu
+// hỏi là 1 câu nói độc lập thay vì câu trong 1 mạch chuyện. Cảnh báo trước
+// khi rời trang nếu chưa nộp bài.
 
 import { useEffect, useRef, useState } from 'react';
 import ScoreSummary from '@/components/ScoreSummary';
-import { submitPart6 } from './actions';
+import { submitPart3 } from './actions';
 
-function HintPattern({ firstLetter, wordLength }) {
-  const blanks = Array.from({ length: Math.max(wordLength - 1, 0) });
+const LETTERS = ['A', 'B', 'C'];
+
+function TickRow({ letter, value, selected, disabled, status, onSelect }) {
+  const classNames = ['tickbox-row'];
+  if (selected) classNames.push('selected');
+  if (status === 'correct') classNames.push('tickbox-correct');
+  if (status === 'wrong') classNames.push('tickbox-wrong');
+
   return (
-    <span className="p6-hint">
-      {firstLetter}
-      {blanks.map((_, i) => (
-        <span key={i} className="p6-hint-blank">
-          _
-        </span>
-      ))}
-    </span>
+    <label className={classNames.join(' ')}>
+      <input type="radio" checked={selected} onChange={() => !disabled && onSelect(letter)} disabled={disabled} />
+      <span className="tickbox-letter">{letter}</span>
+      <span className="tickbox-text">{value}</span>
+      <span className="tickbox-box" aria-hidden="true">
+        {selected && <span className="tickbox-check">✓</span>}
+      </span>
+      {status === 'correct' && <span className="tickbox-status-icon correct">✓</span>}
+      {status === 'wrong' && <span className="tickbox-status-icon wrong">✗</span>}
+    </label>
   );
 }
 
-export default function Part6Client({ questions }) {
+export default function Part3Client({ questions }) {
   const [answers, setAnswers] = useState({});
   const [result, setResult] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const questionRefs = useRef({});
 
-  const answeredCount = questions.filter((q) => answers[q.id] && answers[q.id].trim() !== '').length;
+  const answeredCount = questions.filter((q) => answers[q.id]).length;
   const totalCount = questions.length;
 
   useEffect(() => {
@@ -43,8 +52,8 @@ export default function Part6Client({ questions }) {
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [result]);
 
-  function handleChange(questionId, value) {
-    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+  function handleSelect(questionId, letter) {
+    setAnswers((prev) => ({ ...prev, [questionId]: letter }));
   }
 
   function scrollToQuestion(key) {
@@ -60,7 +69,7 @@ export default function Part6Client({ questions }) {
     if (!confirm(confirmMessage)) return;
 
     setSubmitting(true);
-    const res = await submitPart6(answers);
+    const res = await submitPart3(answers);
     setSubmitting(false);
 
     setResult(res);
@@ -77,15 +86,35 @@ export default function Part6Client({ questions }) {
             <div key={item.question_number} className={`review-item ${item.is_correct ? 'correct' : 'wrong'}`}>
               <p className="question-number">Question {item.question_number}</p>
               <p className="question-text">{item.question_text}</p>
-              <p>Your answer: {item.user_answer !== '' ? item.user_answer : 'Not answered'}</p>
-              <p>Correct answer: {item.correct_answer}</p>
+
+              <div className="tickbox-table">
+                {LETTERS.map((letter) => {
+                  const value = item[`option_${letter.toLowerCase()}`];
+                  let status = null;
+                  if (letter === item.correct_answer) status = 'correct';
+                  else if (letter === item.user_answer) status = 'wrong';
+
+                  return (
+                    <TickRow
+                      key={letter}
+                      letter={letter}
+                      value={value}
+                      selected={letter === item.user_answer}
+                      disabled
+                      status={status}
+                      onSelect={() => {}}
+                    />
+                  );
+                })}
+              </div>
+
               <p className="review-status">{item.is_correct ? '✓ Correct' : '✗ Wrong'}</p>
               {!item.is_correct && item.explanation && <p className="review-explanation">Explanation: {item.explanation}</p>}
             </div>
           ))}
         </section>
 
-        <a id="retry-btn" href="/ket/reading/part6">
+        <a id="retry-btn" href="/ket/reading/part3">
           Làm lại
         </a>
       </>
@@ -106,7 +135,7 @@ export default function Part6Client({ questions }) {
             <button
               key={q.id}
               type="button"
-              className={`listen-nav-pill${answers[q.id] && answers[q.id].trim() !== '' ? ' answered' : ''}`}
+              className={`listen-nav-pill${answers[q.id] ? ' answered' : ''}`}
               onClick={() => scrollToQuestion(q.id)}
             >
               {q.question_number}
@@ -119,18 +148,20 @@ export default function Part6Client({ questions }) {
         <div className="question-block" key={question.id} ref={(el) => { questionRefs.current[question.id] = el; }}>
           <p className="question-number">Question {question.question_number}</p>
           <p className="question-text">{question.question_text}</p>
-          <p>
-            <HintPattern firstLetter={question.first_letter} wordLength={question.word_length} />
-          </p>
-          <input
-            type="text"
-            className="oc-input"
-            value={answers[question.id] ?? ''}
-            onChange={(e) => handleChange(question.id, e.target.value)}
-            maxLength={30}
-            autoComplete="off"
-            spellCheck="false"
-          />
+
+          <div className="tickbox-table">
+            {LETTERS.map((letter) => (
+              <TickRow
+                key={letter}
+                letter={letter}
+                value={question[`option_${letter.toLowerCase()}`]}
+                selected={answers[question.id] === letter}
+                disabled={false}
+                status={null}
+                onSelect={(l) => handleSelect(question.id, l)}
+              />
+            ))}
+          </div>
         </div>
       ))}
 

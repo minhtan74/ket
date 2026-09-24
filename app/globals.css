@@ -953,6 +953,26 @@ textarea:focus-visible {
     color: var(--color-text-muted);
 }
 
+/* Part 3 (Word Completion): gợi ý chữ cái đầu + số ô trống theo độ dài từ */
+.p6-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+}
+
+.p6-hint-blank {
+    display: inline-block;
+    width: 14px;
+    border-bottom: 2px solid var(--color-primary);
+    text-align: center;
+    color: transparent;
+}
+
 .oc-example-answer {
     font-weight: 700;
     text-decoration: underline;

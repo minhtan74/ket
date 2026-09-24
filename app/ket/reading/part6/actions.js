@@ -1,57 +1,41 @@
 'use server';
 
-// Server Action: chấm điểm Part 6 (Form Completion). Tương đương
-// FormCompletionController::result(). Đáp án đúng chỉ được đọc ở đây.
+// Server Action: chấm điểm Reading Part 6 (Word Completion). Chấm toàn bộ
+// 100 câu (không còn tách theo từng đề). So khớp không phân biệt hoa/thường,
+// giống Part 5 (Open Cloze). Đáp án đúng CHỈ được lấy ở đây (server), không
+// bao giờ gửi ra client trước đó.
 
-import { getTestById, getFieldsByTestId } from '@/lib/models/formcompletion';
+import { getAllQuestions } from '@/lib/models/wordCompletion';
 
-const MAX_ANSWER_LENGTH = 40;
+const MAX_ANSWER_LENGTH = 30;
 
-function normalize(text) {
-  return text.trim().toLowerCase().replace(/\s+/g, ' ');
-}
-
-function matchesAnyAnswer(userAnswer, acceptedAnswers) {
-  const normalizedUser = normalize(userAnswer);
-  return acceptedAnswers.some((accepted) => normalize(accepted) === normalizedUser);
-}
-
-export async function submitPart6(testId, submittedAnswers) {
-  const test = testId > 0 ? await getTestById(testId) : null;
-
-  if (!test) {
-    return { error: 'Không tìm thấy đề thi.' };
-  }
-
-  const fields = await getFieldsByTestId(testId);
+export async function submitPart6(submittedAnswers) {
+  const questions = await getAllQuestions();
 
   let correctCount = 0;
   const review = [];
 
-  for (const field of fields) {
-    const number = field.field_number;
-    let raw = submittedAnswers?.[number] ?? '';
+  questions.forEach((question, i) => {
+    let raw = submittedAnswers?.[question.id] ?? '';
     raw = typeof raw === 'string' ? raw.trim() : '';
     raw = raw.slice(0, MAX_ANSWER_LENGTH);
 
-    const acceptedAnswers = String(field.correct_answer).split('|');
-    const isCorrect = raw !== '' && matchesAnyAnswer(raw, acceptedAnswers);
+    const isCorrect = raw !== '' && raw.toLowerCase() === question.correct_answer.toLowerCase();
     if (isCorrect) correctCount++;
 
     review.push({
-      field_number: number,
-      field_label: field.field_label,
-      field_prefix: field.field_prefix,
+      question_number: i + 1,
+      question_text: question.question_text,
       user_answer: raw,
-      correct_answer_display: String(field.correct_answer).replace(/\|/g, ' / '),
+      correct_answer: question.correct_answer,
       is_correct: isCorrect,
-      explanation: field.explanation,
+      explanation: question.explanation,
     });
-  }
+  });
 
-  const total = review.length;
+  const total = questions.length;
   const wrong = total - correctCount;
   const accuracy = total > 0 ? Math.round((correctCount / total) * 1000) / 10 : 0;
 
-  return { test, total, correct: correctCount, wrong, accuracy, review };
+  return { total, correct: correctCount, wrong, accuracy, review };
 }

@@ -27,21 +27,25 @@ export default function HomePage() {
               <span className="part-arrow" aria-hidden="true">&rarr;</span>
             </a>
           </li>
-          <li className="part-item disabled">
-            <span className="part-badge">2</span>
-            <span className="part-meta">
-              <span className="part-title">Reading Part 2</span>
-              <span className="part-desc">Chưa triển khai</span>
-            </span>
-            <span className="coming-soon">Coming soon</span>
+          <li className="part-item available">
+            <a href="/ket/reading/part2">
+              <span className="part-badge">2</span>
+              <span className="part-meta">
+                <span className="part-title">Reading Part 2</span>
+                <span className="part-desc">Vocabulary — 100 câu, chọn A/B/C</span>
+              </span>
+              <span className="part-arrow" aria-hidden="true">&rarr;</span>
+            </a>
           </li>
-          <li className="part-item disabled">
-            <span className="part-badge">3</span>
-            <span className="part-meta">
-              <span className="part-title">Reading Part 3</span>
-              <span className="part-desc">Chưa triển khai</span>
-            </span>
-            <span className="coming-soon">Coming soon</span>
+          <li className="part-item available">
+            <a href="/ket/reading/part3">
+              <span className="part-badge">3</span>
+              <span className="part-meta">
+                <span className="part-title">Reading Part 3 <small>(Matching Response)</small></span>
+                <span className="part-desc">100 câu — chọn phản hồi đúng cho câu nói/câu hỏi</span>
+              </span>
+              <span className="part-arrow" aria-hidden="true">&rarr;</span>
+            </a>
           </li>
           <li className="part-item available">
             <a href="/ket/reading/part4?id=1">
@@ -64,11 +68,11 @@ export default function HomePage() {
             </a>
           </li>
           <li className="part-item available">
-            <a href="/ket/reading/part6?id=1">
+            <a href="/ket/reading/part6">
               <span className="part-badge">6</span>
               <span className="part-meta">
-                <span className="part-title">Reading Part 6 <small>(Form Completion)</small></span>
-                <span className="part-desc">Đọc thư + note, tổng hợp thông tin điền vào form</span>
+                <span className="part-title">Reading Part 6 <small>(Word Completion)</small></span>
+                <span className="part-desc">100 câu — đoán từ từ định nghĩa tiếng Anh</span>
               </span>
               <span className="part-arrow" aria-hidden="true">&rarr;</span>
             </a>
